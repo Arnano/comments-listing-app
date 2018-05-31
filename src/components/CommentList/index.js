@@ -7,7 +7,7 @@ class CommentList extends Component {
 
     return (
       <div>
-        <h3> Comment list </h3>
+        <h4> Comment list </h4>
         <ul>
           {comments.map(comment => {
             return <li key={comment}>{comment}</li>;

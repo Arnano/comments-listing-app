@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
+import { requireAuth } from "components/requireAuth";
 import { saveComments, fetchComments } from "actions";
 
 class CommentBox extends Component {
@@ -36,7 +38,12 @@ class CommentBox extends Component {
       <div>
         <form onSubmit={this.onSubmitForm}>
           <h4> Please enter a comment </h4>
-          <textarea value={comment} onChange={this.onTextChange} />
+          <textarea
+            className="form-control"
+            rows="5"
+            value={comment}
+            onChange={this.onTextChange}
+          />
           <div>
             <button>Submit your comment</button>
           </div>
@@ -49,4 +56,6 @@ class CommentBox extends Component {
   }
 }
 
-export default connect(null, { saveComments, fetchComments })(CommentBox);
+export default connect(null, { saveComments, fetchComments })(
+  requireAuth(CommentBox)
+);
